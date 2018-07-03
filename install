@@ -1,0 +1,36 @@
+#### Install Sentora #####
+
+# install epel-release
+
+yum install -y epel-release
+
+#install NTP
+
+yum -y install chrony
+systemctl enable chronyd.service
+systemctl restart chronyd.service
+systemctl status chronyd.service
+chronyc sources
+
+
+#screen 
+
+screen -R install 
+
+### Keluar screen tanpa mematikan: tekan Ctrl+A kemudian tekan D
+
+
+# install sentora
+
+wget sentora.org/install
+chmod +x install
+./install
+
+
+#install ProFTPD
+
+yum install proftpd proftpd-utils proftpd-mysql -y
+
+systemctl start proftpd
+systemctl enable proftpd	
+systemctl status proftpd
